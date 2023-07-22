@@ -99,3 +99,70 @@ int main(void)
   /* USER CODE END 3 */
 }
 ```
+## [External Interrupt](https://github.com/fardinabbasi/STM32_Basics/tree/main/External_Interrupt)
+Two pins are defined on the microcontroller. We have a pushup button and a digital input connected to them. The goal is to have the LED's blink in a certain speed when pushing the buttons.
+
+The important part of the code corresponding to this component is in the main.c while loop as below:
+```ruby
+int main(void)
+{
+  /* USER CODE BEGIN 1 */
+
+  /* USER CODE END 1 */
+
+  /* MCU Configuration--------------------------------------------------------*/
+
+  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  HAL_Init();
+
+  /* USER CODE BEGIN Init */
+
+  /* USER CODE END Init */
+
+  /* Configure the system clock */
+  SystemClock_Config();
+
+  /* USER CODE BEGIN SysInit */
+
+  /* USER CODE END SysInit */
+
+  /* Initialize all configured peripherals */
+  MX_GPIO_Init();
+  /* USER CODE BEGIN 2 */
+
+  /* USER CODE END 2 */
+
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
+	  if (condition == 0){
+	  	  HAL_GPIO_WritePin(X1_GPIO_Port,X1_Pin,GPIO_PIN_SET);
+	  	  HAL_GPIO_WritePin(X2_GPIO_Port,X2_Pin,GPIO_PIN_SET);
+	  }
+	  if (condition == 1){
+		  HAL_GPIO_WritePin(X1_GPIO_Port,X1_Pin,GPIO_PIN_RESET);
+		  HAL_GPIO_TogglePin(X2_GPIO_Port, X2_Pin);
+		  		  HAL_Delay(100);
+	  }
+	  if(HAL_GPIO_ReadPin(Y1_GPIO_Port,Y1_Pin)==1){
+	  	  HAL_GPIO_WritePin(X1_GPIO_Port,X1_Pin,GPIO_PIN_SET);
+	  	  HAL_GPIO_WritePin(X2_GPIO_Port,X2_Pin,GPIO_PIN_SET);
+		  condition = 0;
+	  }
+    /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
+  }
+  /* USER CODE END 3 */
+}
+```ruby
+void HAL_GPIO_EXTI_Callback ( uint16_t GPIO_Pin)
+	{
+	if(GPIO_Pin == Y2_Pin)
+		condition = 1;
+	else if(GPIO_Pin == Y1_Pin)
+		condition = 0;
+	}
+```
+```
