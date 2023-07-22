@@ -156,6 +156,7 @@ int main(void)
   }
   /* USER CODE END 3 */
 }
+```
 ```ruby
 void HAL_GPIO_EXTI_Callback ( uint16_t GPIO_Pin)
 	{
@@ -164,5 +165,4 @@ void HAL_GPIO_EXTI_Callback ( uint16_t GPIO_Pin)
 	else if(GPIO_Pin == Y1_Pin)
 		condition = 0;
 	}
-```
 ```
