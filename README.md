@@ -71,7 +71,7 @@ void HAL_GPIO_EXTI_Callback ( uint16_t GPIO_Pin)
 		condition = 0;
 	}
 ```
-## LCD Display
+## [LCD Display](https://github.com/fardinabbasi/STM32_Basics/tree/main/LCD)
 ### [Part A](https://github.com/fardinabbasi/STM32_Basics/tree/main/LCD/PartA)
 Connected an LCD to the STM32 microcontroller, and printed my name and student number in its first two lines. The ports and pins corresponding to the LCD are as follows:
 ```ruby
@@ -125,6 +125,38 @@ The last three digits of my student number will be stored in a variable called '
 	  Lcd_string(&lcd, String);
     /* USER CODE END WHILE */
 
+    /* USER CODE BEGIN 3 */
+  }
+  /* USER CODE END 3 */
+}
+```
+## [Timer](https://github.com/fardinabbasi/STM32_Basics/tree/main/Timer)
+Connected a timer to our STM32 micro controller that resets after some time to an initial value. The code corresponding to this component is in the main.c while loop as below:
+```ruby
+  Lcd_PortType ports [] = {
+   		D4_GPIO_Port, D5_GPIO_Port, D6_GPIO_Port, D7_GPIO_Port
+   };
+  Lcd_PinType pins [] = {
+   		D4_Pin, D5_Pin, D6_Pin, D7_Pin
+   };
+
+  Lcd_HandleTypeDef lcd = Lcd_create(ports, pins, RS_GPIO_Port, RS_Pin, E_GPIO_Port, E_Pin, LCD_4_BIT_MODE);
+```
+```ruby
+  int a = 0;
+  while (1)
+  {
+    /* USER CODE END WHILE */
+	  while (a<51){
+		  Lcd_cursor(&lcd, 0, 0);
+		  Lcd_int(&lcd, a);
+		  HAL_Delay(50);
+		  Lcd_clear(&lcd);
+		  a++;
+	  }
+	  if (a == 51){
+		  a = 0;
+	  }
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
