@@ -100,3 +100,33 @@ Connected an LCD to the STM32 microcontroller, and printed my name and student n
 }
 ```
 ### [Part B](https://github.com/fardinabbasi/STM32_Basics/tree/main/LCD/PartB)
+The last three digits of my student number will be stored in a variable called 'a', and 'a' will be divided by 7 and stored in a variable named 'b'. On the first line, 'a' will be displayed, and on the second line, 'b' will be shown with four decimal places.
+```ruby
+  Lcd_PortType ports [] = {
+  		D4_GPIO_Port, D5_GPIO_Port, D6_GPIO_Port, D7_GPIO_Port
+  };
+  Lcd_PinType pins [] = {
+  		D4_Pin, D5_Pin, D6_Pin, D7_Pin
+  };
+
+  Lcd_HandleTypeDef lcd = Lcd_create(ports, pins, RS_GPIO_Port, RS_Pin, E_GPIO_Port, E_Pin, LCD_4_BIT_MODE);
+```
+```ruby
+  int StNumber = 456;
+  float FloatNumber = (float)StNumber/7;
+  char String [50];
+  while (1)
+  {
+	  sprintf(String, (char*)"%d" , StNumber);
+	  Lcd_cursor(&lcd, 0,0);
+	  Lcd_string(&lcd, String);
+	  sprintf(String, (char*)"%.4f" , FloatNumber);
+	  Lcd_cursor(&lcd, 1,0);
+	  Lcd_string(&lcd, String);
+    /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
+  }
+  /* USER CODE END 3 */
+}
+```
