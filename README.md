@@ -47,3 +47,55 @@ int main(void)
   /* USER CODE END 3 */
 }
 ```
+## [Digital Pin Digital Input](https://github.com/fardinabbasi/STM32_Basics/tree/main/Digital_Input_Pin)
+Two push buttons with pull-up resistors connected to them as their output are connected to a STM32 microcontroller. The goal is to turn the LED's on and off by pushing those buttons.
+
+The important part of the code corresponding to this component is in the main.c while loop as below:
+```ruby
+int main(void)
+{
+  /* USER CODE BEGIN 1 */
+
+  /* USER CODE END 1 */
+
+  /* MCU Configuration--------------------------------------------------------*/
+
+  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  HAL_Init();
+
+  /* USER CODE BEGIN Init */
+
+  /* USER CODE END Init */
+
+  /* Configure the system clock */
+  SystemClock_Config();
+
+  /* USER CODE BEGIN SysInit */
+
+  /* USER CODE END SysInit */
+
+  /* Initialize all configured peripherals */
+  MX_GPIO_Init();
+  /* USER CODE BEGIN 2 */
+
+  /* USER CODE END 2 */
+
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
+	  if(HAL_GPIO_ReadPin(Y2_GPIO_Port,Y2_Pin)==0){
+		  HAL_GPIO_WritePin(X2_GPIO_Port,X2_Pin,GPIO_PIN_SET);
+		  HAL_GPIO_WritePin(X1_GPIO_Port,X1_Pin,GPIO_PIN_RESET);
+	  }
+	  if(HAL_GPIO_ReadPin(Y1_GPIO_Port,Y1_Pin)==0){
+		  HAL_GPIO_WritePin(X2_GPIO_Port,X2_Pin,GPIO_PIN_RESET);
+		  HAL_GPIO_WritePin(X1_GPIO_Port,X1_Pin,GPIO_PIN_SET);
+	  }
+    /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
+  }
+  /* USER CODE END 3 */
+}
+```
