@@ -5,35 +5,6 @@ Two green and red LEDs are connected to digital pins in the microcontroller. We 
 
 The important part of the code corresponding to this component is in the main.c while loop as below:
 ```ruby
-int main(void)
-{
-  /* USER CODE BEGIN 1 */
-
-  /* USER CODE END 1 */
-
-  /* MCU Configuration--------------------------------------------------------*/
-
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
-
-  /* USER CODE BEGIN Init */
-
-  /* USER CODE END Init */
-
-  /* Configure the system clock */
-  SystemClock_Config();
-
-  /* USER CODE BEGIN SysInit */
-
-  /* USER CODE END SysInit */
-
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  /* USER CODE BEGIN 2 */
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
   while (1)
   {
 	  HAL_GPIO_WritePin(X1_GPIO_Port,X1_Pin,GPIO_PIN_SET);
@@ -44,44 +15,12 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
   }
-  /* USER CODE END 3 */
-}
 ```
 ## [Digital Pin Digital Input](https://github.com/fardinabbasi/STM32_Basics/tree/main/Digital_Input_Pin)
 Two push buttons with pull-up resistors connected to them as their output are connected to a STM32 microcontroller. The goal is to turn the LED's on and off by pushing those buttons.
 
 The important part of the code corresponding to this component is in the main.c while loop as below:
 ```ruby
-int main(void)
-{
-  /* USER CODE BEGIN 1 */
-
-  /* USER CODE END 1 */
-
-  /* MCU Configuration--------------------------------------------------------*/
-
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
-
-  /* USER CODE BEGIN Init */
-
-  /* USER CODE END Init */
-
-  /* Configure the system clock */
-  SystemClock_Config();
-
-  /* USER CODE BEGIN SysInit */
-
-  /* USER CODE END SysInit */
-
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  /* USER CODE BEGIN 2 */
-
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
   while (1)
   {
 	  if(HAL_GPIO_ReadPin(Y2_GPIO_Port,Y2_Pin)==0){
@@ -96,44 +35,12 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
   }
-  /* USER CODE END 3 */
-}
 ```
 ## [External Interrupt](https://github.com/fardinabbasi/STM32_Basics/tree/main/External_Interrupt)
 Two pins are defined on the microcontroller. We have a pushup button and a digital input connected to them. The goal is to have the LED's blink in a certain speed when pushing the buttons.
 
 The important part of the code corresponding to this component is in the main.c while loop as below:
 ```ruby
-int main(void)
-{
-  /* USER CODE BEGIN 1 */
-
-  /* USER CODE END 1 */
-
-  /* MCU Configuration--------------------------------------------------------*/
-
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
-
-  /* USER CODE BEGIN Init */
-
-  /* USER CODE END Init */
-
-  /* Configure the system clock */
-  SystemClock_Config();
-
-  /* USER CODE BEGIN SysInit */
-
-  /* USER CODE END SysInit */
-
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  /* USER CODE BEGIN 2 */
-
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
   while (1)
   {
 	  if (condition == 0){
@@ -154,8 +61,6 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
   }
-  /* USER CODE END 3 */
-}
 ```
 ```ruby
 void HAL_GPIO_EXTI_Callback ( uint16_t GPIO_Pin)
@@ -168,7 +73,7 @@ void HAL_GPIO_EXTI_Callback ( uint16_t GPIO_Pin)
 ```
 ## LCD Display
 ### [Part A](https://github.com/fardinabbasi/STM32_Basics/tree/main/LCD/PartA)
-Connected an LCD to the STM32 micro controller, and printed my name and student number in its first two lines. The ports and pins corresponding to the LCD are as follows:
+Connected an LCD to the STM32 microcontroller, and printed my name and student number in its first two lines. The ports and pins corresponding to the LCD are as follows:
 ```ruby
   Lcd_PortType ports [] = {
   		D4_GPIO_Port, D5_GPIO_Port, D6_GPIO_Port, D7_GPIO_Port
