@@ -166,3 +166,32 @@ void HAL_GPIO_EXTI_Callback ( uint16_t GPIO_Pin)
 		condition = 0;
 	}
 ```
+## LCD Display
+### [Part A](https://github.com/fardinabbasi/STM32_Basics/tree/main/LCD/PartA)
+Connected an LCD to the STM32 micro controller, and printed my name and student number in its first two lines. The ports and pins corresponding to the LCD are as follows:
+```ruby
+  Lcd_PortType ports [] = {
+  		D4_GPIO_Port, D5_GPIO_Port, D6_GPIO_Port, D7_GPIO_Port
+  };
+  Lcd_PinType pins [] = {
+  		D4_Pin, D5_Pin, D6_Pin, D7_Pin
+  };
+
+  Lcd_HandleTypeDef lcd = Lcd_create(ports, pins, RS_GPIO_Port, RS_Pin, E_GPIO_Port, E_Pin, LCD_4_BIT_MODE);
+```
+```ruby
+  while (1)
+  {
+	  Lcd_cursor(&lcd, 0,0);
+	  Lcd_string(&lcd, "Fardin");
+
+	  Lcd_cursor(&lcd, 1,0);
+	  Lcd_string(&lcd, "810199456");
+    /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
+  }
+  /* USER CODE END 3 */
+}
+```
+### [Part B](https://github.com/fardinabbasi/STM32_Basics/tree/main/LCD/PartB)
