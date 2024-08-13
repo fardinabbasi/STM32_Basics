@@ -162,3 +162,9 @@ Connected a timer to our STM32 micro controller that resets after some time to a
   /* USER CODE END 3 */
 }
 ```
+
+## Course Description
+- **Course**: Instrumentation [ECE 798]
+- **Semester**: Spring 2023
+- **Institution:** [School of Electrical & Computer Engineering](https://ece.ut.ac.ir/en/), [College of Engineering](https://eng.ut.ac.ir/en), [University of Tehran](https://ut.ac.ir/en)
+- **Instructors:** Dr. Nayeri
